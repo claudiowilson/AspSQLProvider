@@ -45,7 +45,6 @@ using NpgsqlTypes;
 
 namespace NauckIT.PostgreSQLProvider {
     public class PgSessionStateStoreProvider : SessionStateStoreProviderBase {
-        private const string s_tableName = "Sessions";
         private System.Timers.Timer m_expiredSessionDeletionTimer;
         private SessionStateStoreSettings settings;
         private bool m_enableExpireCallback = false;
