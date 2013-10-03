@@ -270,7 +270,7 @@ namespace NauckIT.PostgreSQLProvider {
 							properties.FailedPasswordAttemptWindowStart, properties.FailedPasswordAnswerAttemptCount,
 							properties.FailedPasswordAnswerAttemptWindowStart);
 
-						dbCommand.Parameters.Add("@pId", NpgsqlDbType.Varchar, 36).Value = providerUserKey;
+						dbCommand.Parameters.Add("@pId", NpgsqlDbType.Uuid).Value = providerUserKey;
 						dbCommand.Parameters.Add("@Username", NpgsqlDbType.Varchar, 255).Value = username;
 						dbCommand.Parameters.Add("@Password", NpgsqlDbType.Varchar, 255).Value = EncodePassword(password);
 						dbCommand.Parameters.Add("@Email", NpgsqlDbType.Varchar, 128).Value = email;
@@ -732,7 +732,7 @@ namespace NauckIT.PostgreSQLProvider {
 											properties.TableName, properties.LastActivityDate, properties.UserId);
 
 										dbUpdateCommand.Parameters.Add("@LastActivityDate", NpgsqlDbType.TimestampTZ).Value = DateTime.Now;
-										dbUpdateCommand.Parameters.Add("@pId", NpgsqlDbType.Char, 36).Value = u.ProviderUserKey;
+										dbUpdateCommand.Parameters.Add("@pId", NpgsqlDbType.Uuid).Value = u.ProviderUserKey;
 
 										PrepareStatementIfEnabled(dbUpdateCommand);
 
@@ -770,7 +770,7 @@ namespace NauckIT.PostgreSQLProvider {
 						properties.LastLoginDate, properties.LastActivityDate, properties.LastPasswordChangedDate,
 						properties.LastLockedOutDate);
 
-					dbCommand.Parameters.Add("@pId", NpgsqlDbType.Char, 36).Value = providerUserKey;
+					dbCommand.Parameters.Add("@pId", NpgsqlDbType.Uuid).Value = providerUserKey;
 
 					try {
 						dbConn.Open();
@@ -790,7 +790,7 @@ namespace NauckIT.PostgreSQLProvider {
 											properties.TableName, properties.LastActivityDate, properties.UserId);
 
 										dbUpdateCommand.Parameters.Add("@LastActivityDate", NpgsqlDbType.TimestampTZ).Value = DateTime.Now;
-										dbUpdateCommand.Parameters.Add("@pId", NpgsqlDbType.Char, 36).Value = u.ProviderUserKey;
+										dbUpdateCommand.Parameters.Add("@pId", NpgsqlDbType.Uuid).Value = u.ProviderUserKey;
 
 										PrepareStatementIfEnabled(dbUpdateCommand);
 

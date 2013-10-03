@@ -239,7 +239,7 @@ namespace NauckIT.PostgreSQLProvider {
 						"INSERT INTO {0} ({2}, {3}, {4}, {5}, {6}) VALUES (@pId, (SELECT {7} FROM {1} WHERE {8} = @Username AND {9} = @ApplicationName AND {10} = @IsAuthenticated), @Name, @ValueString, @ValueBinary)",
 						profileData.TableName, profile.TableName, profileData.ProfileDataId, profileData.Profile, profileData.Name, profileData.ValueString, profileData.ValueBinary, profile.ProfileID, profile.Username, profile.ApplicationName, profile.IsAnonymous);
 
-					insertCommand.Parameters.Add("@pId", NpgsqlDbType.Varchar, 36);
+					insertCommand.Parameters.Add("@pId", NpgsqlDbType.Uuid);
 					insertCommand.Parameters.Add("@Name", NpgsqlDbType.Varchar, 255);
 					insertCommand.Parameters.Add("@ValueString", NpgsqlDbType.Text);
 					insertCommand.Parameters["@ValueString"].IsNullable = true;
@@ -331,7 +331,7 @@ namespace NauckIT.PostgreSQLProvider {
 						"INSERT INTO {0} ({1}, {2}, {3}, {4}, {5}, {6}) Values (@pId, @Username, @ApplicationName, @IsAuthenticated, @LastActivityDate, @LastUpdatedDate)",
 						profile.TableName, profile.ProfileID, profile.Username, profile.ApplicationName, profile.IsAnonymous, profile.LastActivityDate, profile.LastUpdatedDate);
 
-					dbCommand.Parameters.Add("@pId", NpgsqlDbType.Varchar, 36).Value = Guid.NewGuid().ToString();
+					dbCommand.Parameters.Add("@pId", NpgsqlDbType.Uuid).Value = Guid.NewGuid().ToString();
 					dbCommand.Parameters.Add("@Username", NpgsqlDbType.Varchar, 255).Value = username;
 					dbCommand.Parameters.Add("@ApplicationName", NpgsqlDbType.Varchar, 255).Value = ApplicationName;
 					dbCommand.Parameters.Add("@IsAuthenticated", NpgsqlDbType.Boolean).Value = !isAuthenticated;
