@@ -17,7 +17,7 @@
     </UpgradeBackupLocation>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>NauckIT.PostgreSQLProvider.snk</AssemblyOriginatorKeyFile>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -34,6 +34,7 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -72,12 +73,14 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="ConfigurationParser.cs" />
     <Compile Include="PgMembershipProvider.cs" />
     <Compile Include="PgProfileProvider.cs" />
     <Compile Include="PgRoleProvider.cs" />
@@ -88,6 +91,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ProviderSettings\SessionStateStoreSettings.cs" />
+    <Compile Include="ProviderSettings\MembershipProviderSettings.cs" />
+    <Compile Include="ProviderSettings\Tables\MembershipTableProperties.cs" />
+    <Compile Include="ProviderSettings\Tables\ProfileDataTableProperties.cs" />
+    <Compile Include="ProviderSettings\ProfileProviderSettings.cs" />
+    <Compile Include="ProviderSettings\Tables\ProfileTableProperties.cs" />
+    <Compile Include="ProviderSettings\ProviderSettings.cs" />
+    <Compile Include="ProviderSettings\RoleProviderSettings.cs" />
+    <Compile Include="ProviderSettings\Tables\RoleTableProperties.cs" />
+    <Compile Include="ProviderSettings\Tables\SessionTableProperties.cs" />
+    <Compile Include="ProviderSettings\Tables\SQLTable.cs" />
+    <Compile Include="ProviderSettings\Tables\UsersInRolesTableProperties.cs" />
     <Compile Include="SerializationHelper.cs" />
   </ItemGroup>
   <ItemGroup>
